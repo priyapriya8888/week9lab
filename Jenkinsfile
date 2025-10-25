@@ -26,13 +26,15 @@ pipeline {
         }
 
         stage('Deploy to Kubernetes') {
-            steps {
-                echo "Deploying to Kubernetes..."
-                // Apply deployment and service YAML files
-                bat 'kubectl apply -f deployment.yaml --validate=false'
-                bat 'kubectl apply -f service.yaml'
-            }
+        steps {
+        echo "Deploying to Kubernetes..."
+        withEnv(['KUBECONFIG=C:\\Users\\Vishnupriya\\.kube\\config']) {
+            bat 'kubectl apply -f deployment.yaml --validate=false'
+            bat 'kubectl apply -f service.yaml'
         }
+    }
+}
+
     }
 
     post {
