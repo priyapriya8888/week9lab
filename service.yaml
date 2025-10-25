@@ -4,7 +4,7 @@ metadata:
   name: kubedemoapp-service
 spec:
   selector:
-    app: kubdemoapp
+    app: kubedemoapp
   ports:
     - protocol: TCP
       port: 5000
